@@ -1,0 +1,10 @@
+.grid-container {
+    display:grid;
+    grid-template-areas: 
+    'header header header'
+    'nav main sidebar'
+    'footer footer footer';
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    
+}
