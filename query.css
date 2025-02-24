@@ -1,0 +1,28 @@
+body {
+    background-color: aqua;
+    color: blue;
+}
+@media(max-width:600px){
+  body {
+    font-size: medium;
+    color: black;
+    background-color: azure;
+  }
+}
+@media(min-width:800px){
+    body {
+        color: red;
+        background-color: blue;
+    }
+}
+@media(orientation:landscape){
+    body {
+        font-weight: 200px;
+        font-style: oblique;
+    }
+}
+@media(min-resolution:300dpi){
+    body {
+        color: black;
+    }
+}

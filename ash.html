@@ -1,38 +1,132 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>flex example</title>
-    <link rel="stylesheet" href="ash.css">
+    <title>Dashboard with Reducible Sidebar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 1000px;
+        }
+        .dashboard {
+            display: flex;
+            flex-direction:row;
+            height: 100%;
+        }
+        .topbar {
+            background-color: #537386;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+        .main-content {
+            display: flex;
+            flex:1;
+            overflow: hidden;
+        }
+        .sidebar {
+            background-color: blue;
+            color: white;
+            width: 200px;
+            height: 100%;
+            transition: width 0.3s ease;
+            overflow-y: auto;
+            position: fixed;
+            top: 67px;
+            left: 0
+        }
+        .sidebar.collapsed {
+            width: 0;
+        }
+        .sidebar-content {
+            padding: 1rem;
+            width: 250px;
+        }
+        .content {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            margin-left: 15rem;
+            margin-top: 3rem;
+        }
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .menu-item {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            background-color: #ddd;
+        }
+        @media (max-width:800px ) {
+            .main-content {
+            display: flex;
+           flex-grow: 1;
+             
+        }
+        .content {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto; 
+            margin-top: 3rem;
+            background-color: beige;
+        }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>DIRECTOR</h1>
-    </header>
+    <div class="dashboard">
+        <div class="topbar">
+            <div>
+                <button id="sidebarToggle" class="toggle-btn">&#9776</button>
+                <span>Dashboard</span>
+            </div>
+            <div>User: Kalema Ashiraf</div>
+        </div>
+        <div class="main-content">
+            <div id="sidebar" class="sidebar">
+                <div class="sidebar-content">
+                    <div class="menu-item">Home</div>
+                    <div class="menu-item">Bookings</div>
+                    <div class="menu-item">Contact us</div>
+                    <div class="menu-item">Offers</div>
+                    <div class="menu-item">Service</div>
+                </div>
+            </div>
+            <div class="content">
+                <h2>Welcome to Your Dashboard</h2>
+                <p>This is the main content area. You can add your dashboard widgets, charts, and other content here.</p>
+                <p>The sidebar can be toggled using the button in the top-left corner of the navigation bar.</p>
+            </div>
+        </div>
     </div>
-    <div class="grid-container">
-        <div class="item1">item1</div>
-        <div class="item2">item2</div>
-        <div class="item3">item3</div>
-        <div class="item4">item4</div>
-    </div>
-<main>
-    <h2>kalema</h2>
-    <p>filters of the den</p>
-</main>
-    <nav>
-        <ul>
-            <li><a href="class.css" >class</a></li>
-            <li><a href="class2.html">class2</a></li>
-            <li><a href="indeq.html">index</a></li>
-            
-        </ul>
-    </nav>
-    <footer>
-        ethan the man with  no beared<br>
-        .@gmail.com uganda limited,<br>
-    </footer>
-    
+
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        let isOpen = true;
+
+        sidebarToggle.addEventListener('click', function(){
+            isOpen = !isOpen;
+            sidebar.classList.toggle('collapsed');
+            sidebarToggle.classList.toggle('open', isOpen);
+        });
+    </script>
 </body>
 </html>

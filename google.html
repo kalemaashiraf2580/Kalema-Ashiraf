@@ -6,26 +6,50 @@
     <title>Google Chrome Interface</title>
     <link rel="stylesheet" href="google.css">
 </head>
-<body>
-    <div class="browser-header">
-        <div class="tabs">
-            <div class="tab active">New Tab</div>
-            <div class="tab">Google</div>
-            <div class="tab">YouTube</div>
-        </div>
-        <div class="address-bar-container">
-            <button class="nav-btn"><img src="https://img.icons8.com/ios/452/left.png" alt="Back"></button>
-            <button class="nav-btn"><img src="https://img.icons8.com/ios/452/forward.png" alt="Forward"></button>
-            <button class="nav-btn"><img src="https://img.icons8.com/ios/452/refresh.png" alt="Refresh"></button>
-            <input class="address-bar" type="text" value="https://www.google.com">
-        </div>
-    </div>
-    <div class="browser-content" style="height: 400px; background-color: #fff; padding: 20px;">
-        <h1>Google Chrome Interface</h1>
-        <p>This is a simplified version of the Google Chrome interface using HTML and CSS.</p>
-    </div>
-    <div class="browser-footer">
-        <p>Status: Connected</p>
-    </div>
-</body>
+    <body>
+        <h1>See your friend list!</h1>
+        <ul id="friend-list">
+          <li>Michelle <button>Remove</button></li>
+          <li>Juan <button>Remove</button></li>
+          <li>Emma <button>Remove</button></li>
+        </ul>
+        <body>
+          <h1>See your friend list!</h1>
+          <ul id="friend-list"></ul>
+          <form>
+            <label for="first-name"></label>
+            <input type="text" id="first-name" />
+            <button>Add a friend!</button>
+          </form>
+          <script src="script-form.js"></script>
+        </body>
+        <script>
+            const buttons = document.querySelectorAll("button");
+
+for (let button of buttons) {
+  button.addEventListener("click", function(event) {
+    event.target.parentElement.remove();
+  });
+}
+const form = document.querySelector("form");
+const friendList = document.querySelector("#friend-list");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const newFriendInput = document.querySelector("#first-name");
+  const newLi = document.createElement("li");
+  const newButton = document.createElement("button");
+  newLi.innerText = newFriendInput.value;
+  newButton.innerText = "Remove";
+
+  newButton.addEventListener("click", function(event) {
+    event.target.parentElement.remove();
+  });
+
+  newLi.append(newButton);
+  friendList.append(newLi);
+  form.reset();
+});
+        </script>
+      </body>  
 </html>
